@@ -19,7 +19,7 @@ export const Location = ({ formData, setFormData, onNext, onBack }: StepProps) =
     <div className="space-y-6">
       {/* Event Type Selection */}
       <div className="space-y-2">
-        <label className="text-sm font-medium text-base-content/80">Event Type</label>
+        <label className="text-sm font-medium text-neutral opacity-85">Event Type</label>
         <div className="flex gap-4">
           <label className="label cursor-pointer">
             <input
@@ -29,7 +29,7 @@ export const Location = ({ formData, setFormData, onNext, onBack }: StepProps) =
               checked={!formData.isOnline}
               onChange={() => setFormData({ ...formData, isOnline: false })}
             />
-            <span className="label-text">In-Person</span>
+            <span className="label-text text-neutral">In-Person</span>
           </label>
           <label className="label cursor-pointer">
             <input
@@ -39,7 +39,7 @@ export const Location = ({ formData, setFormData, onNext, onBack }: StepProps) =
               checked={formData.isOnline}
               onChange={() => setFormData({ ...formData, isOnline: true })}
             />
-            <span className="label-text">Online</span>
+            <span className="label-text text-neutral">Online</span>
           </label>
         </div>
       </div>
@@ -47,7 +47,7 @@ export const Location = ({ formData, setFormData, onNext, onBack }: StepProps) =
       {formData.isOnline ? (
         // Online Event Form
         <div className="space-y-2">
-          <label htmlFor="onlineLink" className="text-sm font-medium text-base-content/80">
+          <label htmlFor="onlineLink" className="text-sm font-medium text-neutral opacity-85">
             Event Link
           </label>
           <input
@@ -56,15 +56,15 @@ export const Location = ({ formData, setFormData, onNext, onBack }: StepProps) =
             value={formData.onlineLink || ""}
             onChange={e => setFormData({ ...formData, onlineLink: e.target.value })}
             placeholder="https://zoom.us/j/..."
-            className="input input-bordered w-full"
+            className="input input-bordered w-full bg-base-100 shadow-sm hover:shadow-md transition-shadow duration-200"
           />
-          <p className="text-xs text-base-content/60">Add the link where attendees can join your online event</p>
+          <p className="text-xs text-neutral opacity-60">Add the link where attendees can join your online event</p>
         </div>
       ) : (
         // In-Person Event Form
         <>
           <div className="space-y-2">
-            <label htmlFor="venueName" className="text-sm font-medium text-base-content/80">
+            <label htmlFor="venueName" className="text-sm font-medium text-neutral opacity-85">
               Venue Name
             </label>
             <input
@@ -73,12 +73,12 @@ export const Location = ({ formData, setFormData, onNext, onBack }: StepProps) =
               value={formData.venueName}
               onChange={e => setFormData({ ...formData, venueName: e.target.value })}
               placeholder="Enter venue name"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full bg-base-100 shadow-sm hover:shadow-md transition-shadow duration-200"
             />
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="streetAddress" className="text-sm font-medium text-base-content/80">
+            <label htmlFor="streetAddress" className="text-sm font-medium text-neutral opacity-85">
               Street Address
             </label>
             <input
@@ -87,13 +87,13 @@ export const Location = ({ formData, setFormData, onNext, onBack }: StepProps) =
               value={formData.streetAddress}
               onChange={e => setFormData({ ...formData, streetAddress: e.target.value })}
               placeholder="Enter street address"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full bg-base-100 shadow-sm hover:shadow-md transition-shadow duration-200"
             />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <label htmlFor="city" className="text-sm font-medium text-base-content/80">
+              <label htmlFor="city" className="text-sm font-medium text-neutral opacity-85">
                 City
               </label>
               <input
@@ -102,12 +102,12 @@ export const Location = ({ formData, setFormData, onNext, onBack }: StepProps) =
                 value={formData.city}
                 onChange={e => setFormData({ ...formData, city: e.target.value })}
                 placeholder="Enter city"
-                className="input input-bordered w-full"
+                className="input input-bordered w-full bg-base-100 shadow-sm hover:shadow-md transition-shadow duration-200"
               />
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="state" className="text-sm font-medium text-base-content/80">
+              <label htmlFor="state" className="text-sm font-medium text-neutral opacity-85">
                 State/Province
               </label>
               <input
@@ -116,14 +116,14 @@ export const Location = ({ formData, setFormData, onNext, onBack }: StepProps) =
                 value={formData.state}
                 onChange={e => setFormData({ ...formData, state: e.target.value })}
                 placeholder="Enter state/province"
-                className="input input-bordered w-full"
+                className="input input-bordered w-full bg-base-100 shadow-sm hover:shadow-md transition-shadow duration-200"
               />
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <label htmlFor="postalCode" className="text-sm font-medium text-base-content/80">
+              <label htmlFor="postalCode" className="text-sm font-medium text-neutral opacity-85">
                 Postal Code
               </label>
               <input
@@ -132,12 +132,12 @@ export const Location = ({ formData, setFormData, onNext, onBack }: StepProps) =
                 value={formData.postalCode}
                 onChange={e => setFormData({ ...formData, postalCode: e.target.value })}
                 placeholder="Enter postal code"
-                className="input input-bordered w-full"
+                className="input input-bordered w-full bg-base-100 shadow-sm hover:shadow-md transition-shadow duration-200"
               />
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="country" className="text-sm font-medium text-base-content/80">
+              <label htmlFor="country" className="text-sm font-medium text-neutral opacity-85">
                 Country
               </label>
               <input
@@ -146,7 +146,7 @@ export const Location = ({ formData, setFormData, onNext, onBack }: StepProps) =
                 value={formData.country}
                 onChange={e => setFormData({ ...formData, country: e.target.value })}
                 placeholder="Enter country"
-                className="input input-bordered w-full"
+                className="input input-bordered w-full bg-base-100 shadow-sm hover:shadow-md transition-shadow duration-200"
               />
             </div>
           </div>
@@ -155,10 +155,17 @@ export const Location = ({ formData, setFormData, onNext, onBack }: StepProps) =
 
       {/* Navigation Buttons */}
       <div className="flex justify-between pt-4">
-        <button onClick={onBack} className="btn btn-outline">
+        <button
+          onClick={onBack}
+          className="btn btn-outline btn-neutral shadow-sm hover:shadow-md transition-all duration-200"
+        >
           Back
         </button>
-        <button onClick={onNext} className="btn btn-primary" disabled={!isLocationValid()}>
+        <button
+          onClick={onNext}
+          className="btn btn-primary shadow-sm hover:shadow-md transition-all duration-200"
+          disabled={!isLocationValid()}
+        >
           Next: Tickets
         </button>
       </div>
