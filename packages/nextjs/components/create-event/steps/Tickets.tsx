@@ -48,10 +48,10 @@ export const Tickets = ({ formData, setFormData, onNext, onBack }: StepProps) =>
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h2 className="text-xl font-semibold">Ticket Types</h2>
+        <h2 className="text-xl font-semibold text-neutral">Ticket Types</h2>
         <button
           onClick={addTicketType}
-          className="btn btn-outline btn-sm gap-2"
+          className="btn btn-outline btn-accent btn-sm gap-2 shadow-sm hover:shadow-md transition-all duration-200"
           disabled={formData.ticketTypes.length >= 5}
         >
           <PlusIcon className="w-4 h-4" />
@@ -60,11 +60,17 @@ export const Tickets = ({ formData, setFormData, onNext, onBack }: StepProps) =>
       </div>
 
       {formData.ticketTypes.map((ticket, index) => (
-        <div key={ticket.id} className="bg-base-200 p-4 rounded-lg space-y-4">
+        <div
+          key={ticket.id}
+          className="bg-base-300/50 p-4 rounded-lg space-y-4 shadow-sm hover:shadow-md transition-all duration-200"
+        >
           <div className="flex justify-between items-center">
-            <h3 className="font-medium">Ticket Type {index + 1}</h3>
+            <h3 className="font-medium text-neutral">Ticket Type {index + 1}</h3>
             {formData.ticketTypes.length > 1 && (
-              <button onClick={() => removeTicketType(ticket.id)} className="btn btn-ghost btn-sm text-error">
+              <button
+                onClick={() => removeTicketType(ticket.id)}
+                className="btn btn-ghost btn-sm text-error hover:bg-error/10"
+              >
                 <TrashIcon className="w-4 h-4" />
               </button>
             )}
@@ -72,7 +78,7 @@ export const Tickets = ({ formData, setFormData, onNext, onBack }: StepProps) =>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <label htmlFor={`name-${ticket.id}`} className="text-sm font-medium text-base-content/80">
+              <label htmlFor={`name-${ticket.id}`} className="text-sm font-medium text-neutral opacity-85">
                 Ticket Name
               </label>
               <input
@@ -81,12 +87,12 @@ export const Tickets = ({ formData, setFormData, onNext, onBack }: StepProps) =>
                 value={ticket.name}
                 onChange={e => updateTicketType(ticket.id, "name", e.target.value)}
                 placeholder="e.g., General Admission"
-                className="input input-bordered w-full"
+                className="input input-bordered w-full bg-base-100 shadow-sm hover:shadow-md transition-shadow duration-200"
               />
             </div>
 
             <div className="space-y-2">
-              <label htmlFor={`price-${ticket.id}`} className="text-sm font-medium text-base-content/80">
+              <label htmlFor={`price-${ticket.id}`} className="text-sm font-medium text-neutral opacity-85">
                 Price (MATIC)
               </label>
               <input
@@ -97,14 +103,14 @@ export const Tickets = ({ formData, setFormData, onNext, onBack }: StepProps) =>
                 placeholder="0.00"
                 min="0"
                 step="0.01"
-                className="input input-bordered w-full"
+                className="input input-bordered w-full bg-base-100 shadow-sm hover:shadow-md transition-shadow duration-200"
               />
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <label htmlFor={`quantity-${ticket.id}`} className="text-sm font-medium text-base-content/80">
+              <label htmlFor={`quantity-${ticket.id}`} className="text-sm font-medium text-neutral opacity-85">
                 Available Quantity
               </label>
               <input
@@ -114,12 +120,12 @@ export const Tickets = ({ formData, setFormData, onNext, onBack }: StepProps) =>
                 onChange={e => updateTicketType(ticket.id, "quantity", e.target.value)}
                 placeholder="Enter quantity"
                 min="1"
-                className="input input-bordered w-full"
+                className="input input-bordered w-full bg-base-100 shadow-sm hover:shadow-md transition-shadow duration-200"
               />
             </div>
 
             <div className="space-y-2">
-              <label htmlFor={`description-${ticket.id}`} className="text-sm font-medium text-base-content/80">
+              <label htmlFor={`description-${ticket.id}`} className="text-sm font-medium text-neutral opacity-85">
                 Description (Optional)
               </label>
               <input
@@ -128,7 +134,7 @@ export const Tickets = ({ formData, setFormData, onNext, onBack }: StepProps) =>
                 value={ticket.description}
                 onChange={e => updateTicketType(ticket.id, "description", e.target.value)}
                 placeholder="Add description"
-                className="input input-bordered w-full"
+                className="input input-bordered w-full bg-base-100 shadow-sm hover:shadow-md transition-shadow duration-200"
               />
             </div>
           </div>
@@ -137,10 +143,17 @@ export const Tickets = ({ formData, setFormData, onNext, onBack }: StepProps) =>
 
       {/* Navigation Buttons */}
       <div className="flex justify-between pt-4">
-        <button onClick={onBack} className="btn btn-outline">
+        <button
+          onClick={onBack}
+          className="btn btn-outline btn-neutral shadow-sm hover:shadow-md transition-all duration-200"
+        >
           Back
         </button>
-        <button onClick={onNext} className="btn btn-primary" disabled={!isTicketsValid()}>
+        <button
+          onClick={onNext}
+          className="btn btn-primary shadow-sm hover:shadow-md transition-all duration-200"
+          disabled={!isTicketsValid()}
+        >
           Next: Attendees
         </button>
       </div>
