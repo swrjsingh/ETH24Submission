@@ -76,22 +76,40 @@ const CreateEvent = () => {
       onBack: handleBack,
     };
 
-    switch (activeSection) {
-      case "basic":
-        return <BasicInfo {...commonProps} />;
-      case "datetime":
-        return <DateTime {...commonProps} />;
-      case "location":
-        return <Location {...commonProps} />;
-      case "tickets":
-        return <Tickets {...commonProps} />;
-      case "attendees":
-        return <Attendees {...commonProps} />;
-      default:
-        return (
-          <p className="text-base-content/70">Select a section from the left menu to continue creating your event.</p>
-        );
-    }
+    const StepComponent = (() => {
+      switch (activeSection) {
+        case "basic":
+          return <BasicInfo {...commonProps} />;
+        case "datetime":
+          return <DateTime {...commonProps} />;
+        case "location":
+          return <Location {...commonProps} />;
+        case "tickets":
+          return <Tickets {...commonProps} />;
+        case "attendees":
+          return <Attendees {...commonProps} />;
+        default:
+          return (
+            <div className="text-center space-y-4 animate-fade-in">
+              <p className="text-neutral opacity-85">
+                Select a section from the left menu to continue creating your event.
+              </p>
+              <button
+                onClick={() => setActiveSection("basic")}
+                className="btn btn-primary btn-sm shadow-sm hover:shadow-md transition-all duration-200"
+              >
+                Start with Basic Info
+              </button>
+            </div>
+          );
+      }
+    })();
+
+    return (
+      <div className="animate-fade-in" key={activeSection}>
+        {StepComponent}
+      </div>
+    );
   };
 
   return (
