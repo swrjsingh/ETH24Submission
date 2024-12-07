@@ -2,7 +2,7 @@ import * as chains from "viem/chains";
 
 // Define Amoy testnet
 const amoy = {
-  ...chains.polygonMumbai,
+  ...chains.polygonAmoy,
   name: "Polygon Amoy",
   network: "amoy",
 } as const;
