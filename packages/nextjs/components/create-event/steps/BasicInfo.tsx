@@ -32,24 +32,8 @@ export const BasicInfo = ({ formData, setFormData, onNext }: StepProps) => {
         />
       </div>
 
-      {/* Privacy Setting */}
-      <div className="space-y-2 animate-slide-up" style={{ animationDelay: "0.3s" }}>
-        <label className="text-sm font-medium text-neutral opacity-85">Privacy Setting</label>
-        <div className="form-control">
-          <label className="label cursor-pointer justify-start gap-4">
-            <input
-              type="checkbox"
-              className="checkbox checkbox-primary"
-              checked={formData.isPrivate}
-              onChange={e => setFormData({ ...formData, isPrivate: e.target.checked })}
-            />
-            <span className="label-text">Make this event private</span>
-          </label>
-        </div>
-      </div>
-
       {/* Navigation Buttons */}
-      <div className="flex justify-end pt-4 animate-slide-up" style={{ animationDelay: "0.4s" }}>
+      <div className="flex justify-end pt-4 animate-slide-up" style={{ animationDelay: "0.3s" }}>
         <button
           onClick={onNext}
           className="btn btn-primary shadow-sm hover:shadow-md transition-all duration-200 hover:scale-[1.02]"

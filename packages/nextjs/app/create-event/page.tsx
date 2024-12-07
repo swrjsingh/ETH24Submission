@@ -17,7 +17,6 @@ const CreateEvent = () => {
   const [formData, setFormData] = useState<EventFormData>({
     name: "",
     description: "",
-    imageCID: "QmTest123", // Placeholder CID
     startTime: 0,
     endTime: 0,
     venueName: "",
@@ -28,7 +27,6 @@ const CreateEvent = () => {
     country: "",
     ticketPrice: "",
     maxAttendees: 0,
-    isPrivate: false,
   });
 
   const { writeContractAsync, isMining } = useScaffoldWriteContract("EventTicketing");
@@ -44,7 +42,6 @@ const CreateEvent = () => {
             {
               name: formData.name,
               description: formData.description,
-              imageCID: formData.imageCID,
               startTime: BigInt(formData.startTime),
               endTime: BigInt(formData.endTime),
               venueName: formData.venueName,
@@ -55,7 +52,6 @@ const CreateEvent = () => {
               country: formData.country,
               ticketPrice: parseEther(formData.ticketPrice || "0"),
               maxAttendees: BigInt(formData.maxAttendees),
-              isPrivate: formData.isPrivate,
             },
           ],
         });
