@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { NextPage } from "next";
 import jsQR from "jsqr";
 import { groth16 } from "snarkjs";
 import {QRCodeCanvas} from "qrcode.react"
+import { Html5QrcodeScanner } from "html5-qrcode"
 
 // Define types for props
 interface PaymentFormProps {
@@ -102,71 +103,43 @@ const QRScanner: React.FC<QRScannerProps> = ({ setStep, setRandomNumber }) => {
   const [qrResult, setQrResult] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.files && event.target.files[0]) {
-      setFile(event.target.files[0]);
+  const onScanSuccess = (decodedText, decodedResult) => {
+    setRandomNumber(decodedText);
+    setStep(1);
+  }
+
+  const onScanError = () => {}
+
+  useEffect(() => {
+    // Check if window is defined to ensure this runs only on the client side
+    let scanner : string | Html5QrcodeScanner = "";
+    if (typeof window !== "undefined") {
+      // Create a new instance of Html5QrcodeScanner
+      scanner = new Html5QrcodeScanner('qrcode-scanner', {
+        fps: 10, // Frames per second for scanning
+        qrbox: 250, // Size of the scanning box
+      }, false);
+
+      // Start the scanner with a callback function
+      scanner.render(onScanSuccess, onScanError);
     }
-  };
 
-  const handleUpload = () => {
-    if (!file) return;
-    setQrResult(null);
-    setErrorMessage(null);
-
-    const reader = new FileReader();
-    reader.onload = function (event) {
-      const img = new Image();
-      img.onload = function () {
-        // Create a canvas to draw the image
-        const canvas = document.createElement("canvas");
-        const context = canvas.getContext("2d");
-        if (context) {
-          canvas.width = img.width;
-          canvas.height = img.height;
-          context.drawImage(img, 0, 0);
-          const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-          const qrCode = jsQR(imageData.data, canvas.width, canvas.height);
-          
-          if (qrCode) {
-            setQrResult(qrCode.data);
-            setStep(1);
-            setRandomNumber(qrCode.data);
-          } else {
-            setErrorMessage("No QR code found.");
-          }
-        }
-      };
-      img.src = event.target.result as string;
+    // Cleanup the scanner when the component unmounts
+    return () => {
+      if (typeof window !== "undefined") {
+        scanner.clear();
+      }
     };
-    reader.readAsDataURL(file);
-  };
+  }, []);
 
   return (
     <div className="flex items-center justify-center min-h-screen min-w-screen">
       <div className="px-5 py-12 bg-white shadow-md rounded-lg max-w-sm mx-auto space-y-6">
         <h1 className="text-4xl font-bold text-center text-neutral">Scan a QR Code</h1>
         <p className="text-neutral text-center opacity-75">
-          Upload a file to scan a QR code or use a scanner.
+            Scan a QR Code using a scanner
         </p>
-        <div className="space-y-6">
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleFileChange}
-            className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer focus:outline-none"
-          />
-          <button
-            onClick={handleUpload}
-            className="w-full py-2 px-4 bg-teal-500 text-white font-medium rounded-lg hover:bg-teal-600 transition duration-200"
-          >
-            {file ? "Upload and Scan" : "Choose File"}
-          </button>
-        </div>
-        {file && (
-          <div className="text-sm text-gray-600 text-center mt-2">
-            Selected file: {file.name}
-          </div>
-        )}
+        <div id="qrcode-scanner"></div>
       </div>
     </div>
   );
@@ -232,8 +205,8 @@ const QrPresenter: React.FC<QrPresenterProps> = ({ qrData }) => {
 
   return (
     <div className="flex items-center justify-center min-h-screen min-w-screen">
-      <div className="px-5 py-12 bg-white shadow-md rounded-lg max-w-sm mx-auto space-y-6">
-        {!loading1 && !loading2 ? <QRCodeCanvas value={JSON.stringify({ hash, proof })} size={256}></QRCodeCanvas> : "Generating QR Code!"}
+      <div className="px-5 py-12 bg-white shadow-md rounded-lg max-w-xl mx-auto space-y-6">
+        {!loading1 && !loading2 ? <QRCodeCanvas value={JSON.stringify({ hash, proof })} size={350}></QRCodeCanvas> : "Generating QR Code!"}
       </div>
     </div>
   );
