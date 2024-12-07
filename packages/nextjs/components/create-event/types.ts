@@ -17,7 +17,6 @@ export interface EventFormData {
   state: string;
   postalCode: string;
   country: string;
-  isOnline: boolean;
   ticketPrice: string;
   maxAttendees: number;
   isPrivate: boolean;
