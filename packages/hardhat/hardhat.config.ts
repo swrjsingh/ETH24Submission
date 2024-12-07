@@ -17,7 +17,9 @@ const providerApiKey = process.env.ALCHEMY_API_KEY || "oKxs-03sij-U_N0iOlrSsZFr2
 const deployerPrivateKey =
   process.env.DEPLOYER_PRIVATE_KEY ?? "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80";
 // If not set, it uses ours Etherscan default API key.
-const etherscanApiKey = process.env.ETHERSCAN_API_KEY || "DNXJA8RX2Q3VZ4URQIWP7Z68CJXQZSC6AW";
+const etherscanApiKey = process.env.POLYGONSCAN_API_KEY || "DNXJA8RX2Q3VZ4URQIWP7Z68CJXQZSC6AW";
+// Infura API Key for Polygon Amoy
+const infuraApiKey = process.env.INFURA_API_KEY;
 
 const config: HardhatUserConfig = {
   solidity: {
@@ -27,9 +29,9 @@ const config: HardhatUserConfig = {
         settings: {
           optimizer: {
             enabled: true,
-            // https://docs.soliditylang.org/en/latest/using-the-compiler.html#optimizer-options
             runs: 200,
           },
+          viaIR: true,
         },
       },
     ],
@@ -37,7 +39,6 @@ const config: HardhatUserConfig = {
   defaultNetwork: "localhost",
   namedAccounts: {
     deployer: {
-      // By default, it will take the first Hardhat account as the deployer
       default: 0,
     },
   },
@@ -81,6 +82,11 @@ const config: HardhatUserConfig = {
     polygonMumbai: {
       url: `https://polygon-mumbai.g.alchemy.com/v2/${providerApiKey}`,
       accounts: [deployerPrivateKey],
+    },
+    polygonAmoy: {
+      url: `https://polygon-amoy.infura.io/v3/${infuraApiKey}`,
+      accounts: [deployerPrivateKey],
+      chainId: 80002,
     },
     polygonZkEvm: {
       url: `https://polygonzkevm-mainnet.g.alchemy.com/v2/${providerApiKey}`,
@@ -133,12 +139,24 @@ const config: HardhatUserConfig = {
   },
   // configuration for harhdat-verify plugin
   etherscan: {
-    apiKey: `${etherscanApiKey}`,
+    apiKey: {
+      polygonAmoy: etherscanApiKey,
+    },
+    customChains: [
+      {
+        network: "polygonAmoy",
+        chainId: 80002,
+        urls: {
+          apiURL: "https://api-amoy.polygonscan.com/api",
+          browserURL: "https://amoy.polygonscan.com",
+        },
+      },
+    ],
   },
   // configuration for etherscan-verify from hardhat-deploy plugin
   verify: {
     etherscan: {
-      apiKey: `${etherscanApiKey}`,
+      apiKey: etherscanApiKey,
     },
   },
   sourcify: {
