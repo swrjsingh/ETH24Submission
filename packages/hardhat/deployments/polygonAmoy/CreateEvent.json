@@ -1,0 +1,862 @@
+{
+  "address": "0xC4590DeA91230dC84F968Fe9aFe864A202Fa2334",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnableInvalidOwner",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "OwnableUnauthorizedAccount",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "eventId",
+          "type": "uint256"
+        }
+      ],
+      "name": "EventCancelled",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "eventId",
+          "type": "uint256"
+        }
+      ],
+      "name": "EventCompleted",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "eventId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "organizer",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "startTime",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "endTime",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "ticketPrice",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "maxAttendees",
+          "type": "uint256"
+        }
+      ],
+      "name": "EventCreated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "eventId",
+          "type": "uint256"
+        }
+      ],
+      "name": "cancelEvent",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "eventId",
+          "type": "uint256"
+        }
+      ],
+      "name": "completeEvent",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "startTime",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "endTime",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "venueName",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "streetAddress",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "city",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "state",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "postalCode",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "country",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "ticketPrice",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "maxAttendees",
+          "type": "uint256"
+        }
+      ],
+      "name": "createEvent",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "events",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "eventId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "organizer",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "startTime",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "endTime",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "venueName",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "streetAddress",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "city",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "state",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "postalCode",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "country",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "ticketPrice",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "maxAttendees",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "ticketsSold",
+          "type": "uint256"
+        },
+        {
+          "internalType": "enum CreateEvent.EventStatus",
+          "name": "status",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "eventId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getEventDetails",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "eventId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "organizer",
+              "type": "address"
+            },
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "description",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "startTime",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "endTime",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "venueName",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "streetAddress",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "city",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "state",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "postalCode",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "country",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "ticketPrice",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "maxAttendees",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "ticketsSold",
+              "type": "uint256"
+            },
+            {
+              "internalType": "enum CreateEvent.EventStatus",
+              "name": "status",
+              "type": "uint8"
+            }
+          ],
+          "internalType": "struct CreateEvent.EventDetails",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "organizer",
+          "type": "address"
+        }
+      ],
+      "name": "getOrganizerEvents",
+      "outputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "organizerEvents",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "eventId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "newTicketsSold",
+          "type": "uint256"
+        }
+      ],
+      "name": "updateTicketsSold",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0xbf932ffe80ead8dac94a922d082d1c0811a653c6d15f98796e8dfc3d7d15e67a",
+  "receipt": {
+    "to": null,
+    "from": "0x20A7279C7354Fc9ee5aefF99Cc380Ae5bf35F2e5",
+    "contractAddress": "0xC4590DeA91230dC84F968Fe9aFe864A202Fa2334",
+    "transactionIndex": 1,
+    "gasUsed": "1573687",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000020800000000000000000000000000000000000000000000000008000004000000000000000400000000000000000000000000000000000800001000000000000000100001000000000000008020000000000000000000800000000000000000080000000000000400000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000010000000000000000000000004000000000000000400001000000000000000000000000000004100000000020000000000000000000000000000000008000000000000000000000000000100000",
+    "blockHash": "0x65288cbe3f0620cc3f1d71cbf02aee5b2ed35295e1a3dfd49cf1108706ebd01b",
+    "transactionHash": "0xbf932ffe80ead8dac94a922d082d1c0811a653c6d15f98796e8dfc3d7d15e67a",
+    "logs": [
+      {
+        "transactionIndex": 1,
+        "blockNumber": 15343128,
+        "transactionHash": "0xbf932ffe80ead8dac94a922d082d1c0811a653c6d15f98796e8dfc3d7d15e67a",
+        "address": "0xC4590DeA91230dC84F968Fe9aFe864A202Fa2334",
+        "topics": [
+          "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0",
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x00000000000000000000000020a7279c7354fc9ee5aeff99cc380ae5bf35f2e5"
+        ],
+        "data": "0x",
+        "logIndex": 1,
+        "blockHash": "0x65288cbe3f0620cc3f1d71cbf02aee5b2ed35295e1a3dfd49cf1108706ebd01b"
+      },
+      {
+        "transactionIndex": 1,
+        "blockNumber": 15343128,
+        "transactionHash": "0xbf932ffe80ead8dac94a922d082d1c0811a653c6d15f98796e8dfc3d7d15e67a",
+        "address": "0x0000000000000000000000000000000000001010",
+        "topics": [
+          "0x4dfe1bbbcf077ddc3e01291eea2d5c70c2b422b415d95645b9adcfd678cb1d63",
+          "0x0000000000000000000000000000000000000000000000000000000000001010",
+          "0x00000000000000000000000020a7279c7354fc9ee5aeff99cc380ae5bf35f2e5",
+          "0x0000000000000000000000004ad84f7014b7b44f723f284a85b1662337971439"
+        ],
+        "data": "0x00000000000000000000000000000000000000000000000001dad26e0380a3b60000000000000000000000000000000000000000000000001828ced777aabac100000000000000000000000000000000000000000000046fe2b3b8832b6259e3000000000000000000000000000000000000000000000000164dfc69742a170b00000000000000000000000000000000000000000000046fe48e8af12ee2fd99",
+        "logIndex": 2,
+        "blockHash": "0x65288cbe3f0620cc3f1d71cbf02aee5b2ed35295e1a3dfd49cf1108706ebd01b"
+      }
+    ],
+    "blockNumber": 15343128,
+    "cumulativeGasUsed": "1596491",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "0797a112cbc26dd1e8960e1f5bb1bf37",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.20+commit.a1b79de6\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"OwnableInvalidOwner\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"OwnableUnauthorizedAccount\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"eventId\",\"type\":\"uint256\"}],\"name\":\"EventCancelled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"eventId\",\"type\":\"uint256\"}],\"name\":\"EventCompleted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"eventId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"organizer\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"startTime\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"endTime\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"ticketPrice\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"maxAttendees\",\"type\":\"uint256\"}],\"name\":\"EventCreated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"eventId\",\"type\":\"uint256\"}],\"name\":\"cancelEvent\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"eventId\",\"type\":\"uint256\"}],\"name\":\"completeEvent\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"startTime\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"endTime\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"venueName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"streetAddress\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"city\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"state\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"postalCode\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"country\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"ticketPrice\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"maxAttendees\",\"type\":\"uint256\"}],\"name\":\"createEvent\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"events\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"eventId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"organizer\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"startTime\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"endTime\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"venueName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"streetAddress\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"city\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"state\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"postalCode\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"country\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"ticketPrice\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"maxAttendees\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"ticketsSold\",\"type\":\"uint256\"},{\"internalType\":\"enum CreateEvent.EventStatus\",\"name\":\"status\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"eventId\",\"type\":\"uint256\"}],\"name\":\"getEventDetails\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"eventId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"organizer\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"startTime\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"endTime\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"venueName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"streetAddress\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"city\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"state\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"postalCode\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"country\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"ticketPrice\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"maxAttendees\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"ticketsSold\",\"type\":\"uint256\"},{\"internalType\":\"enum CreateEvent.EventStatus\",\"name\":\"status\",\"type\":\"uint8\"}],\"internalType\":\"struct CreateEvent.EventDetails\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"organizer\",\"type\":\"address\"}],\"name\":\"getOrganizerEvents\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"organizerEvents\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"eventId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"newTicketsSold\",\"type\":\"uint256\"}],\"name\":\"updateTicketsSold\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Contract for creating and managing events\",\"errors\":{\"OwnableInvalidOwner(address)\":[{\"details\":\"The owner is not a valid owner account. (eg. `address(0)`)\"}],\"OwnableUnauthorizedAccount(address)\":[{\"details\":\"The caller account is not authorized to perform an operation.\"}]},\"kind\":\"dev\",\"methods\":{\"cancelEvent(uint256)\":{\"details\":\"Cancels an event\",\"params\":{\"eventId\":\"Event ID\"}},\"completeEvent(uint256)\":{\"details\":\"Completes an event\",\"params\":{\"eventId\":\"Event ID\"}},\"createEvent(string,string,uint256,uint256,string,string,string,string,string,string,uint256,uint256)\":{\"details\":\"Creates a new event\",\"params\":{\"city\":\"City\",\"country\":\"Country\",\"description\":\"Event description\",\"endTime\":\"Event end time\",\"maxAttendees\":\"Maximum number of attendees\",\"name\":\"Event name\",\"postalCode\":\"Postal code\",\"startTime\":\"Event start time\",\"state\":\"State\",\"streetAddress\":\"Street address\",\"ticketPrice\":\"Price per ticket in wei\",\"venueName\":\"Venue name\"}},\"getEventDetails(uint256)\":{\"details\":\"Gets event details\",\"params\":{\"eventId\":\"Event ID\"}},\"getOrganizerEvents(address)\":{\"details\":\"Gets all events created by an organizer\",\"params\":{\"organizer\":\"Address of the organizer\"}},\"owner()\":{\"details\":\"Returns the address of the current owner.\"},\"renounceOwnership()\":{\"details\":\"Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner.\"},\"transferOwnership(address)\":{\"details\":\"Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner.\"},\"updateTicketsSold(uint256,uint256)\":{\"details\":\"Updates ticket sales count for an event\",\"params\":{\"eventId\":\"Event ID\",\"newTicketsSold\":\"New number of tickets sold\"}}},\"title\":\"CreateEvent\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/CreateEvent.sol\":\"CreateEvent\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[],\"viaIR\":true},\"sources\":{\"@openzeppelin/contracts/access/Ownable.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v5.0.0) (access/Ownable.sol)\\n\\npragma solidity ^0.8.20;\\n\\nimport {Context} from \\\"../utils/Context.sol\\\";\\n\\n/**\\n * @dev Contract module which provides a basic access control mechanism, where\\n * there is an account (an owner) that can be granted exclusive access to\\n * specific functions.\\n *\\n * The initial owner is set to the address provided by the deployer. This can\\n * later be changed with {transferOwnership}.\\n *\\n * This module is used through inheritance. It will make available the modifier\\n * `onlyOwner`, which can be applied to your functions to restrict their use to\\n * the owner.\\n */\\nabstract contract Ownable is Context {\\n    address private _owner;\\n\\n    /**\\n     * @dev The caller account is not authorized to perform an operation.\\n     */\\n    error OwnableUnauthorizedAccount(address account);\\n\\n    /**\\n     * @dev The owner is not a valid owner account. (eg. `address(0)`)\\n     */\\n    error OwnableInvalidOwner(address owner);\\n\\n    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);\\n\\n    /**\\n     * @dev Initializes the contract setting the address provided by the deployer as the initial owner.\\n     */\\n    constructor(address initialOwner) {\\n        if (initialOwner == address(0)) {\\n            revert OwnableInvalidOwner(address(0));\\n        }\\n        _transferOwnership(initialOwner);\\n    }\\n\\n    /**\\n     * @dev Throws if called by any account other than the owner.\\n     */\\n    modifier onlyOwner() {\\n        _checkOwner();\\n        _;\\n    }\\n\\n    /**\\n     * @dev Returns the address of the current owner.\\n     */\\n    function owner() public view virtual returns (address) {\\n        return _owner;\\n    }\\n\\n    /**\\n     * @dev Throws if the sender is not the owner.\\n     */\\n    function _checkOwner() internal view virtual {\\n        if (owner() != _msgSender()) {\\n            revert OwnableUnauthorizedAccount(_msgSender());\\n        }\\n    }\\n\\n    /**\\n     * @dev Leaves the contract without owner. It will not be possible to call\\n     * `onlyOwner` functions. Can only be called by the current owner.\\n     *\\n     * NOTE: Renouncing ownership will leave the contract without an owner,\\n     * thereby disabling any functionality that is only available to the owner.\\n     */\\n    function renounceOwnership() public virtual onlyOwner {\\n        _transferOwnership(address(0));\\n    }\\n\\n    /**\\n     * @dev Transfers ownership of the contract to a new account (`newOwner`).\\n     * Can only be called by the current owner.\\n     */\\n    function transferOwnership(address newOwner) public virtual onlyOwner {\\n        if (newOwner == address(0)) {\\n            revert OwnableInvalidOwner(address(0));\\n        }\\n        _transferOwnership(newOwner);\\n    }\\n\\n    /**\\n     * @dev Transfers ownership of the contract to a new account (`newOwner`).\\n     * Internal function without access restriction.\\n     */\\n    function _transferOwnership(address newOwner) internal virtual {\\n        address oldOwner = _owner;\\n        _owner = newOwner;\\n        emit OwnershipTransferred(oldOwner, newOwner);\\n    }\\n}\\n\",\"keccak256\":\"0xff6d0bb2e285473e5311d9d3caacb525ae3538a80758c10649a4d61029b017bb\",\"license\":\"MIT\"},\"@openzeppelin/contracts/utils/Context.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v5.0.1) (utils/Context.sol)\\n\\npragma solidity ^0.8.20;\\n\\n/**\\n * @dev Provides information about the current execution context, including the\\n * sender of the transaction and its data. While these are generally available\\n * via msg.sender and msg.data, they should not be accessed in such a direct\\n * manner, since when dealing with meta-transactions the account sending and\\n * paying for execution may not be the actual sender (as far as an application\\n * is concerned).\\n *\\n * This contract is only required for intermediate, library-like contracts.\\n */\\nabstract contract Context {\\n    function _msgSender() internal view virtual returns (address) {\\n        return msg.sender;\\n    }\\n\\n    function _msgData() internal view virtual returns (bytes calldata) {\\n        return msg.data;\\n    }\\n\\n    function _contextSuffixLength() internal view virtual returns (uint256) {\\n        return 0;\\n    }\\n}\\n\",\"keccak256\":\"0x493033a8d1b176a037b2cc6a04dad01a5c157722049bbecf632ca876224dd4b2\",\"license\":\"MIT\"},\"contracts/CreateEvent.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.0;\\n\\nimport \\\"@openzeppelin/contracts/access/Ownable.sol\\\";\\n\\n/**\\n * @title CreateEvent\\n * @dev Contract for creating and managing events\\n */\\ncontract CreateEvent is Ownable {\\n    uint256 private _eventIds;\\n\\n    enum EventStatus { Active, Completed, Cancelled }\\n\\n    struct EventDetails {\\n        uint256 eventId;\\n        address organizer;\\n        string name;\\n        string description;\\n        uint256 startTime;\\n        uint256 endTime;\\n        string venueName;\\n        string streetAddress;\\n        string city;\\n        string state;\\n        string postalCode;\\n        string country;\\n        uint256 ticketPrice;\\n        uint256 maxAttendees;\\n        uint256 ticketsSold;\\n        EventStatus status;\\n    }\\n\\n    // Event ID => Event details\\n    mapping(uint256 => EventDetails) public events;\\n    // Organizer => Event IDs\\n    mapping(address => uint256[]) public organizerEvents;\\n\\n    event EventCreated(\\n        uint256 indexed eventId,\\n        address indexed organizer,\\n        string name,\\n        uint256 startTime,\\n        uint256 endTime,\\n        uint256 ticketPrice,\\n        uint256 maxAttendees\\n    );\\n\\n    event EventCancelled(uint256 indexed eventId);\\n    event EventCompleted(uint256 indexed eventId);\\n\\n    constructor() Ownable(msg.sender) {\\n        _eventIds = 0;\\n    }\\n\\n    /**\\n     * @dev Creates a new event\\n     * @param name Event name\\n     * @param description Event description\\n     * @param startTime Event start time\\n     * @param endTime Event end time\\n     * @param venueName Venue name\\n     * @param streetAddress Street address\\n     * @param city City\\n     * @param state State\\n     * @param postalCode Postal code\\n     * @param country Country\\n     * @param ticketPrice Price per ticket in wei\\n     * @param maxAttendees Maximum number of attendees\\n     */\\n    function createEvent(\\n        string memory name,\\n        string memory description,\\n        uint256 startTime,\\n        uint256 endTime,\\n        string memory venueName,\\n        string memory streetAddress,\\n        string memory city,\\n        string memory state,\\n        string memory postalCode,\\n        string memory country,\\n        uint256 ticketPrice,\\n        uint256 maxAttendees\\n    ) external returns (uint256) {\\n        require(bytes(name).length > 0, \\\"Name cannot be empty\\\");\\n        require(startTime > block.timestamp, \\\"Start time must be in the future\\\");\\n        require(endTime > startTime, \\\"End time must be after start time\\\");\\n        require(maxAttendees > 0, \\\"Max attendees must be greater than 0\\\");\\n        require(bytes(venueName).length > 0, \\\"Venue name cannot be empty\\\");\\n\\n        unchecked {\\n            _eventIds++;\\n        }\\n        uint256 eventId = _eventIds;\\n\\n        events[eventId] = EventDetails({\\n            eventId: eventId,\\n            organizer: msg.sender,\\n            name: name,\\n            description: description,\\n            startTime: startTime,\\n            endTime: endTime,\\n            venueName: venueName,\\n            streetAddress: streetAddress,\\n            city: city,\\n            state: state,\\n            postalCode: postalCode,\\n            country: country,\\n            ticketPrice: ticketPrice,\\n            maxAttendees: maxAttendees,\\n            ticketsSold: 0,\\n            status: EventStatus.Active\\n        });\\n\\n        organizerEvents[msg.sender].push(eventId);\\n\\n        emit EventCreated(\\n            eventId,\\n            msg.sender,\\n            name,\\n            startTime,\\n            endTime,\\n            ticketPrice,\\n            maxAttendees\\n        );\\n\\n        return eventId;\\n    }\\n\\n    /**\\n     * @dev Updates ticket sales count for an event\\n     * @param eventId Event ID\\n     * @param newTicketsSold New number of tickets sold\\n     */\\n    function updateTicketsSold(uint256 eventId, uint256 newTicketsSold) external {\\n        EventDetails storage eventDetails = events[eventId];\\n        require(eventDetails.eventId != 0, \\\"Event does not exist\\\");\\n        require(msg.sender == owner(), \\\"Only owner can update tickets sold\\\");\\n        require(newTicketsSold <= eventDetails.maxAttendees, \\\"Cannot exceed max attendees\\\");\\n        \\n        eventDetails.ticketsSold = newTicketsSold;\\n    }\\n\\n    /**\\n     * @dev Cancels an event\\n     * @param eventId Event ID\\n     */\\n    function cancelEvent(uint256 eventId) external {\\n        EventDetails storage eventDetails = events[eventId];\\n        require(eventDetails.eventId != 0, \\\"Event does not exist\\\");\\n        require(msg.sender == eventDetails.organizer || msg.sender == owner(), \\\"Not authorized\\\");\\n        require(eventDetails.status == EventStatus.Active, \\\"Event not active\\\");\\n        \\n        eventDetails.status = EventStatus.Cancelled;\\n        emit EventCancelled(eventId);\\n    }\\n\\n    /**\\n     * @dev Completes an event\\n     * @param eventId Event ID\\n     */\\n    function completeEvent(uint256 eventId) external {\\n        EventDetails storage eventDetails = events[eventId];\\n        require(eventDetails.eventId != 0, \\\"Event does not exist\\\");\\n        require(msg.sender == eventDetails.organizer || msg.sender == owner(), \\\"Not authorized\\\");\\n        require(eventDetails.status == EventStatus.Active, \\\"Event not active\\\");\\n        require(block.timestamp >= eventDetails.endTime, \\\"Event not ended yet\\\");\\n        \\n        eventDetails.status = EventStatus.Completed;\\n        emit EventCompleted(eventId);\\n    }\\n\\n    /**\\n     * @dev Gets all events created by an organizer\\n     * @param organizer Address of the organizer\\n     */\\n    function getOrganizerEvents(address organizer) external view returns (uint256[] memory) {\\n        return organizerEvents[organizer];\\n    }\\n\\n    /**\\n     * @dev Gets event details\\n     * @param eventId Event ID\\n     */\\n    function getEventDetails(uint256 eventId) external view returns (EventDetails memory) {\\n        require(events[eventId].eventId != 0, \\\"Event does not exist\\\");\\n        return events[eventId];\\n    }\\n} \",\"keccak256\":\"0x0b33cb53d30f02fc32c8cae7362d9741df91502b11829bbb790336d1d42b6dec\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x6080806040523461007f5733156100695760008054336001600160a01b03198216811783556040519290916001600160a01b0316907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09080a36000600155611b0090816100858239f35b631e4fbdf760e01b815260006004820152602490fd5b600080fdfe60a0604052600436101561001257600080fd5b60003560e01c80630b791430146116255780633a029f72146108495780633f69babd1461079d578063715018a6146107445780638da5cb5b1461071b5780639b7aea7514610626578063afcea9551461053e578063e4aa47e3146104e5578063ec38d5a0146101dc578063f2fde38b1461014e5763ff9f59701461009557600080fd5b3461014957602080600319360112610149576001600160a01b036100b761199b565b1660005260038152604060002060405190818382549182815201908192600052846000209060005b868282106101355786866100f582880383611831565b604051928392818401908285525180915260408401929160005b82811061011e57505050500390f35b83518552869550938101939281019260010161010f565b8354855290930192600192830192016100df565b600080fd5b346101495760203660031901126101495761016761199b565b61016f6119df565b6001600160a01b039081169081156101c357600054826bffffffffffffffffffffffff60a01b821617600055167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0600080a3005b604051631e4fbdf760e01b815260006004820152602490fd5b346101495760203660031901126101495760006101e06040516101fe81611815565b828152826020820152606060408201526060808201528260808201528260a0820152606060c0820152606060e0820152606061010082015260606101208201526060610140820152606061016082015282610180820152826101a0820152826101c082015201526004358060005260026020526102816040600020541515611a0b565b6000526002602052604060002060ff600f6040519261029f84611815565b8054845260018101546001600160a01b031660208501526102c260028201611852565b60408501526102d360038201611852565b606085015260048101546080850152600581015460a08501526102f860068201611852565b60c085015261030960078201611852565b60e085015261031a60088201611852565b61010085015261032c60098201611852565b61012085015261033e600a8201611852565b610140850152610350600b8201611852565b610160850152600c810154610180850152600d8101546101a0850152600e8101546101c085015201541660038110156104cf57816040916101e060609401526104cb6101e061049b61048361046b61045361043b6104246103fa6103e48a6102008d519e8f9e8f93602085528051602086015260018060a01b036020820151168286015201519201526102208d01906118f8565b60608b01518c8203601f190160808e01526118f8565b60808a015160a08c015260a08a015160c08c015260c08a0151601f198c83030160e08d01526118f8565b60e08901518a8203601f19016101008c01526118f8565b610100880151898203601f19016101208b01526118f8565b610120870151888203601f19016101408a01526118f8565b610140860151878203601f19016101608901526118f8565b610160850151868203601f19016101808801526118f8565b926101808101516101a08601526101a08101516101c08601526101c0810151828601520151610200840190611938565b0390f35b634e487b7160e01b600052602160045260246000fd5b34610149576040366003190112610149576104fe61199b565b6001600160a01b03166000908152600360205260409020805460243591908210156101495760209161052f916119b1565b90549060031b1c604051908152f35b34610149576040366003190112610149576024356004356000526002602052604060002061056e81541515611a0b565b6000546001600160a01b031633036105d657600d810154821161059157600e0155005b60405162461bcd60e51b815260206004820152601b60248201527f43616e6e6f7420657863656564206d617820617474656e6465657300000000006044820152606490fd5b60405162461bcd60e51b815260206004820152602260248201527f4f6e6c79206f776e65722063616e20757064617465207469636b65747320736f6044820152611b1960f21b6064820152608490fd5b3461014957602036600319011261014957600435806000526002602052604060002061065481541515611a0b565b600181015461067890336001600160a01b039182161490811561070d575b50611a4e565b600f81019081549060ff82169060038210156104cf5761069a60059215611a8b565b015442106106d25760ff191660011790557fbb85ff95aded757cf3b840cc38e6e719a2915827f28e3364f62cbefa25bbe2de600080a2005b60405162461bcd60e51b8152602060048201526013602482015272115d995b9d081b9bdd08195b991959081e595d606a1b6044820152606490fd5b905060005416331484610672565b34610149576000366003190112610149576000546040516001600160a01b039091168152602090f35b346101495760003660031901126101495761075d6119df565b600080546001600160a01b0319811682556001600160a01b03167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e08280a3005b3461014957602036600319011261014957600435806000526002602052600f60406000206107cd81541515611a0b565b60018101546107f090336001600160a01b039182161490811561083b5750611a4e565b01805460ff81169060038210156104cf5761080d60029215611a8b565b60ff19161790557fdc3cb569b066460f4a22dffa05317bdcce5d3826382ed49a21f13e5fa2063d39600080a2005b905060005416331485610672565b3461014957610180366003190112610149576004356001600160401b0381116101495761087a903690600401611945565b6024356001600160401b03811161014957610899903690600401611945565b6084356001600160401b038111610149576108b8903690600401611945565b9060a4356001600160401b038111610149576108d8903690600401611945565b60c4356001600160401b038111610149576108f7903690600401611945565b60e4356001600160401b03811161014957610916903690600401611945565b610104356001600160401b03811161014957610936903690600401611945565b91610124356001600160401b03811161014957610957903690600401611945565b938751156115e9574260443511156115a5576044356064351115611556576101643515611505578651156114c057600180540196876001556040519661099c88611815565b8888523360208901528960408901526060880152604435608088015260643560a088015260c087015260e086015261010085015261012084015261014083015261016082015261014435610180820152610164356101a082015260006101c082015260006101e08201528160005260026020526040600020815181556001810160018060a01b036020840151166bffffffffffffffffffffffff60a01b82541617905560408201518051906001600160401b038211610e32578190610a6460028501546117db565b601f811161146d575b50602090601f83116001146113fb576000926113f0575b50508160011b916000199060031b1c19161760028201555b60608201518051906001600160401b038211610e32578190610ac160038501546117db565b601f811161139d575b50602090601f831160011461132b57600092611320575b50508160011b916000199060031b1c19161760038201555b6080820151600482015560a0820151600582015560c08201518051906001600160401b038211610e32578190610b3260068501546117db565b601f81116112cd575b50602090601f831160011461125b57600092611250575b50508160011b916000199060031b1c19161760068201555b60e08201518051906001600160401b038211610e32578190610b8f60078501546117db565b601f81116111fd575b50602090601f831160011461118b57600092611180575b50508160011b916000199060031b1c19161760078201555b6101008201518051906001600160401b038211610e32578190610bed60088501546117db565b601f811161112d575b50602090601f83116001146110bb576000926110b0575b50508160011b916000199060031b1c19161760088201555b6101208201518051906001600160401b038211610e32578190610c4b60098501546117db565b601f811161105d575b50602090601f8311600114610feb57600092610fe0575b50508160011b916000199060031b1c19161760098201555b6101408201518051906001600160401b038211610e32578190610ca9600a8501546117db565b601f8111610f8d575b50602090601f8311600114610f1b57600092610f10575b50508160011b916000199060031b1c191617600a8201555b6101608201518051906001600160401b038211610e3257610d05600b8401546117db565b601f8111610ec9575b50602090601f8311600114610e535791806101e09492600f94600092610e48575b50508160011b916000199060031b1c191617600b8201555b610180840151600c8201556101a0840151600d8201556101c0840151600e8201550191015160038110156104cf5760ff8019835416911617905533600052600360205260406000209182549268010000000000000000841015610e325783610db69160016020960181556119b1565b81549060031b9084821b91600019901b1916179055817fb6a83ff9d6bbd62d96305d6eb336e501e42317b524fcca1b5ae9d5be9195812a610e026040519360a0855260a08501906118f8565b926044358682015260643560408201526101443560608201526101643560808201528033940390a3604051908152f35b634e487b7160e01b600052604160045260246000fd5b015190508880610d2f565b90600b840160005260206000209160005b601f1985168110610eb15750926101e09492600192600f9583601f19811610610e98575b505050811b01600b820155610d47565b015160001960f88460031b161c19169055888080610e88565b91926020600181928685015181550194019201610e64565b600b84016000526020600020601f840160051c810160208510610f09575b601f830160051c82018110610efd575050610d0e565b60008155600101610ee7565b5080610ee7565b015190508680610cc9565b9250600a84016000526020600020906000935b601f1984168510610f72576001945083601f19811610610f59575b505050811b01600a820155610ce1565b015160001960f88460031b161c19169055868080610f49565b81810151835560209485019460019093019290910190610f2e565b909150600a84016000526020600020601f840160051c810160208510610fd9575b90849392915b601f830160051c82018110610fca575050610cb2565b60008155859450600101610fb4565b5080610fae565b015190508680610c6b565b9250600984016000526020600020906000935b601f1984168510611042576001945083601f19811610611029575b505050811b016009820155610c83565b015160001960f88460031b161c19169055868080611019565b81810151835560209485019460019093019290910190610ffe565b909150600984016000526020600020601f840160051c8101602085106110a9575b90849392915b601f830160051c8201811061109a575050610c54565b60008155859450600101611084565b508061107e565b015190508680610c0d565b9250600884016000526020600020906000935b601f1984168510611112576001945083601f198116106110f9575b505050811b016008820155610c25565b015160001960f88460031b161c191690558680806110e9565b818101518355602094850194600190930192909101906110ce565b909150600884016000526020600020601f840160051c810160208510611179575b90849392915b601f830160051c8201811061116a575050610bf6565b60008155859450600101611154565b508061114e565b015190508680610baf565b9250600784016000526020600020906000935b601f19841685106111e2576001945083601f198116106111c9575b505050811b016007820155610bc7565b015160001960f88460031b161c191690558680806111b9565b8181015183556020948501946001909301929091019061119e565b909150600784016000526020600020601f840160051c810160208510611249575b90849392915b601f830160051c8201811061123a575050610b98565b60008155859450600101611224565b508061121e565b015190508680610b52565b9250600684016000526020600020906000935b601f19841685106112b2576001945083601f19811610611299575b505050811b016006820155610b6a565b015160001960f88460031b161c19169055868080611289565b8181015183556020948501946001909301929091019061126e565b909150600684016000526020600020601f840160051c810160208510611319575b90849392915b601f830160051c8201811061130a575050610b3b565b600081558594506001016112f4565b50806112ee565b015190508680610ae1565b9250600384016000526020600020906000935b601f1984168510611382576001945083601f19811610611369575b505050811b016003820155610af9565b015160001960f88460031b161c19169055868080611359565b8181015183556020948501946001909301929091019061133e565b909150600384016000526020600020601f840160051c8101602085106113e9575b90849392915b601f830160051c820181106113da575050610aca565b600081558594506001016113c4565b50806113be565b015190508680610a84565b9250600284016000526020600020906000935b601f1984168510611452576001945083601f19811610611439575b505050811b016002820155610a9c565b015160001960f88460031b161c19169055868080611429565b8181015183556020948501946001909301929091019061140e565b909150600284016000526020600020601f840160051c8101602085106114b9575b90849392915b601f830160051c820181106114aa575050610a6d565b60008155859450600101611494565b508061148e565b60405162461bcd60e51b815260206004820152601a60248201527f56656e7565206e616d652063616e6e6f7420626520656d7074790000000000006044820152606490fd5b60405162461bcd60e51b8152602060048201526024808201527f4d617820617474656e64656573206d75737420626520677265617465722074686044820152630616e20360e41b6064820152608490fd5b60405162461bcd60e51b815260206004820152602160248201527f456e642074696d65206d7573742062652061667465722073746172742074696d6044820152606560f81b6064820152608490fd5b606460405162461bcd60e51b815260206004820152602060248201527f53746172742074696d65206d75737420626520696e20746865206675747572656044820152fd5b60405162461bcd60e51b81526020600482015260146024820152734e616d652063616e6e6f7420626520656d70747960601b6044820152606490fd5b3461014957602036600319011261014957600435600052600260205260406000208054600160a01b60019003600183015416916002810161166590611852565b9261167260038301611852565b600483015460058401549061168960068601611852565b61169560078701611852565b6116a160088801611852565b916116ae60098901611852565b936116bb600a8a01611852565b956116c8600b8b01611852565b97600c8b01549c600d8c01549a600e8d01549c600f015460ff169d60405180608052526080516020015261020080608051604001526080510161170a916118f8565b608051808203906060015261171e916118f8565b916080516080015260805160a001526080518082039060c00152611741916118f8565b6080518082039060e00152611755916118f8565b60805180820390610100015261176a916118f8565b60805180820390610120015261177f916118f8565b608051808203906101400152611794916118f8565b6080518082039061016001526117a9916118f8565b9360805161018001526080516101a001526080516101c001526080516101e0016117d291611938565b60805180910390f35b90600182811c9216801561180b575b60208310146117f557565b634e487b7160e01b600052602260045260246000fd5b91607f16916117ea565b61020081019081106001600160401b03821117610e3257604052565b90601f801991011681019081106001600160401b03821117610e3257604052565b9060405191826000825492611866846117db565b9081845260019485811690816000146118d55750600114611892575b505061189092500383611831565b565b9093915060005260209081600020936000915b8183106118bd57505061189093508201013880611882565b855488840185015294850194879450918301916118a5565b91505061189094506020925060ff191682840152151560051b8201013880611882565b919082519283825260005b848110611924575050826000602080949584010152601f8019910116010190565b602081830181015184830182015201611903565b9060038210156104cf5752565b81601f82011215610149578035906001600160401b038211610e325760405192611979601f8401601f191660200185611831565b8284526020838301011161014957816000926020809301838601378301015290565b600435906001600160a01b038216820361014957565b80548210156119c95760005260206000200190600090565b634e487b7160e01b600052603260045260246000fd5b6000546001600160a01b031633036119f357565b60405163118cdaa760e01b8152336004820152602490fd5b15611a1257565b60405162461bcd60e51b8152602060048201526014602482015273115d995b9d08191bd95cc81b9bdd08195e1a5cdd60621b6044820152606490fd5b15611a5557565b60405162461bcd60e51b815260206004820152600e60248201526d139bdd08185d5d1a1bdc9a5e995960921b6044820152606490fd5b15611a9257565b60405162461bcd60e51b815260206004820152601060248201526f4576656e74206e6f742061637469766560801b6044820152606490fdfea26469706673582212209764b42f7bfe574bf452e1d43a5a3d8541285c0d479f20bc6f9f29f08e916d4d64736f6c63430008140033",
+  "deployedBytecode": "0x60a0604052600436101561001257600080fd5b60003560e01c80630b791430146116255780633a029f72146108495780633f69babd1461079d578063715018a6146107445780638da5cb5b1461071b5780639b7aea7514610626578063afcea9551461053e578063e4aa47e3146104e5578063ec38d5a0146101dc578063f2fde38b1461014e5763ff9f59701461009557600080fd5b3461014957602080600319360112610149576001600160a01b036100b761199b565b1660005260038152604060002060405190818382549182815201908192600052846000209060005b868282106101355786866100f582880383611831565b604051928392818401908285525180915260408401929160005b82811061011e57505050500390f35b83518552869550938101939281019260010161010f565b8354855290930192600192830192016100df565b600080fd5b346101495760203660031901126101495761016761199b565b61016f6119df565b6001600160a01b039081169081156101c357600054826bffffffffffffffffffffffff60a01b821617600055167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0600080a3005b604051631e4fbdf760e01b815260006004820152602490fd5b346101495760203660031901126101495760006101e06040516101fe81611815565b828152826020820152606060408201526060808201528260808201528260a0820152606060c0820152606060e0820152606061010082015260606101208201526060610140820152606061016082015282610180820152826101a0820152826101c082015201526004358060005260026020526102816040600020541515611a0b565b6000526002602052604060002060ff600f6040519261029f84611815565b8054845260018101546001600160a01b031660208501526102c260028201611852565b60408501526102d360038201611852565b606085015260048101546080850152600581015460a08501526102f860068201611852565b60c085015261030960078201611852565b60e085015261031a60088201611852565b61010085015261032c60098201611852565b61012085015261033e600a8201611852565b610140850152610350600b8201611852565b610160850152600c810154610180850152600d8101546101a0850152600e8101546101c085015201541660038110156104cf57816040916101e060609401526104cb6101e061049b61048361046b61045361043b6104246103fa6103e48a6102008d519e8f9e8f93602085528051602086015260018060a01b036020820151168286015201519201526102208d01906118f8565b60608b01518c8203601f190160808e01526118f8565b60808a015160a08c015260a08a015160c08c015260c08a0151601f198c83030160e08d01526118f8565b60e08901518a8203601f19016101008c01526118f8565b610100880151898203601f19016101208b01526118f8565b610120870151888203601f19016101408a01526118f8565b610140860151878203601f19016101608901526118f8565b610160850151868203601f19016101808801526118f8565b926101808101516101a08601526101a08101516101c08601526101c0810151828601520151610200840190611938565b0390f35b634e487b7160e01b600052602160045260246000fd5b34610149576040366003190112610149576104fe61199b565b6001600160a01b03166000908152600360205260409020805460243591908210156101495760209161052f916119b1565b90549060031b1c604051908152f35b34610149576040366003190112610149576024356004356000526002602052604060002061056e81541515611a0b565b6000546001600160a01b031633036105d657600d810154821161059157600e0155005b60405162461bcd60e51b815260206004820152601b60248201527f43616e6e6f7420657863656564206d617820617474656e6465657300000000006044820152606490fd5b60405162461bcd60e51b815260206004820152602260248201527f4f6e6c79206f776e65722063616e20757064617465207469636b65747320736f6044820152611b1960f21b6064820152608490fd5b3461014957602036600319011261014957600435806000526002602052604060002061065481541515611a0b565b600181015461067890336001600160a01b039182161490811561070d575b50611a4e565b600f81019081549060ff82169060038210156104cf5761069a60059215611a8b565b015442106106d25760ff191660011790557fbb85ff95aded757cf3b840cc38e6e719a2915827f28e3364f62cbefa25bbe2de600080a2005b60405162461bcd60e51b8152602060048201526013602482015272115d995b9d081b9bdd08195b991959081e595d606a1b6044820152606490fd5b905060005416331484610672565b34610149576000366003190112610149576000546040516001600160a01b039091168152602090f35b346101495760003660031901126101495761075d6119df565b600080546001600160a01b0319811682556001600160a01b03167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e08280a3005b3461014957602036600319011261014957600435806000526002602052600f60406000206107cd81541515611a0b565b60018101546107f090336001600160a01b039182161490811561083b5750611a4e565b01805460ff81169060038210156104cf5761080d60029215611a8b565b60ff19161790557fdc3cb569b066460f4a22dffa05317bdcce5d3826382ed49a21f13e5fa2063d39600080a2005b905060005416331485610672565b3461014957610180366003190112610149576004356001600160401b0381116101495761087a903690600401611945565b6024356001600160401b03811161014957610899903690600401611945565b6084356001600160401b038111610149576108b8903690600401611945565b9060a4356001600160401b038111610149576108d8903690600401611945565b60c4356001600160401b038111610149576108f7903690600401611945565b60e4356001600160401b03811161014957610916903690600401611945565b610104356001600160401b03811161014957610936903690600401611945565b91610124356001600160401b03811161014957610957903690600401611945565b938751156115e9574260443511156115a5576044356064351115611556576101643515611505578651156114c057600180540196876001556040519661099c88611815565b8888523360208901528960408901526060880152604435608088015260643560a088015260c087015260e086015261010085015261012084015261014083015261016082015261014435610180820152610164356101a082015260006101c082015260006101e08201528160005260026020526040600020815181556001810160018060a01b036020840151166bffffffffffffffffffffffff60a01b82541617905560408201518051906001600160401b038211610e32578190610a6460028501546117db565b601f811161146d575b50602090601f83116001146113fb576000926113f0575b50508160011b916000199060031b1c19161760028201555b60608201518051906001600160401b038211610e32578190610ac160038501546117db565b601f811161139d575b50602090601f831160011461132b57600092611320575b50508160011b916000199060031b1c19161760038201555b6080820151600482015560a0820151600582015560c08201518051906001600160401b038211610e32578190610b3260068501546117db565b601f81116112cd575b50602090601f831160011461125b57600092611250575b50508160011b916000199060031b1c19161760068201555b60e08201518051906001600160401b038211610e32578190610b8f60078501546117db565b601f81116111fd575b50602090601f831160011461118b57600092611180575b50508160011b916000199060031b1c19161760078201555b6101008201518051906001600160401b038211610e32578190610bed60088501546117db565b601f811161112d575b50602090601f83116001146110bb576000926110b0575b50508160011b916000199060031b1c19161760088201555b6101208201518051906001600160401b038211610e32578190610c4b60098501546117db565b601f811161105d575b50602090601f8311600114610feb57600092610fe0575b50508160011b916000199060031b1c19161760098201555b6101408201518051906001600160401b038211610e32578190610ca9600a8501546117db565b601f8111610f8d575b50602090601f8311600114610f1b57600092610f10575b50508160011b916000199060031b1c191617600a8201555b6101608201518051906001600160401b038211610e3257610d05600b8401546117db565b601f8111610ec9575b50602090601f8311600114610e535791806101e09492600f94600092610e48575b50508160011b916000199060031b1c191617600b8201555b610180840151600c8201556101a0840151600d8201556101c0840151600e8201550191015160038110156104cf5760ff8019835416911617905533600052600360205260406000209182549268010000000000000000841015610e325783610db69160016020960181556119b1565b81549060031b9084821b91600019901b1916179055817fb6a83ff9d6bbd62d96305d6eb336e501e42317b524fcca1b5ae9d5be9195812a610e026040519360a0855260a08501906118f8565b926044358682015260643560408201526101443560608201526101643560808201528033940390a3604051908152f35b634e487b7160e01b600052604160045260246000fd5b015190508880610d2f565b90600b840160005260206000209160005b601f1985168110610eb15750926101e09492600192600f9583601f19811610610e98575b505050811b01600b820155610d47565b015160001960f88460031b161c19169055888080610e88565b91926020600181928685015181550194019201610e64565b600b84016000526020600020601f840160051c810160208510610f09575b601f830160051c82018110610efd575050610d0e565b60008155600101610ee7565b5080610ee7565b015190508680610cc9565b9250600a84016000526020600020906000935b601f1984168510610f72576001945083601f19811610610f59575b505050811b01600a820155610ce1565b015160001960f88460031b161c19169055868080610f49565b81810151835560209485019460019093019290910190610f2e565b909150600a84016000526020600020601f840160051c810160208510610fd9575b90849392915b601f830160051c82018110610fca575050610cb2565b60008155859450600101610fb4565b5080610fae565b015190508680610c6b565b9250600984016000526020600020906000935b601f1984168510611042576001945083601f19811610611029575b505050811b016009820155610c83565b015160001960f88460031b161c19169055868080611019565b81810151835560209485019460019093019290910190610ffe565b909150600984016000526020600020601f840160051c8101602085106110a9575b90849392915b601f830160051c8201811061109a575050610c54565b60008155859450600101611084565b508061107e565b015190508680610c0d565b9250600884016000526020600020906000935b601f1984168510611112576001945083601f198116106110f9575b505050811b016008820155610c25565b015160001960f88460031b161c191690558680806110e9565b818101518355602094850194600190930192909101906110ce565b909150600884016000526020600020601f840160051c810160208510611179575b90849392915b601f830160051c8201811061116a575050610bf6565b60008155859450600101611154565b508061114e565b015190508680610baf565b9250600784016000526020600020906000935b601f19841685106111e2576001945083601f198116106111c9575b505050811b016007820155610bc7565b015160001960f88460031b161c191690558680806111b9565b8181015183556020948501946001909301929091019061119e565b909150600784016000526020600020601f840160051c810160208510611249575b90849392915b601f830160051c8201811061123a575050610b98565b60008155859450600101611224565b508061121e565b015190508680610b52565b9250600684016000526020600020906000935b601f19841685106112b2576001945083601f19811610611299575b505050811b016006820155610b6a565b015160001960f88460031b161c19169055868080611289565b8181015183556020948501946001909301929091019061126e565b909150600684016000526020600020601f840160051c810160208510611319575b90849392915b601f830160051c8201811061130a575050610b3b565b600081558594506001016112f4565b50806112ee565b015190508680610ae1565b9250600384016000526020600020906000935b601f1984168510611382576001945083601f19811610611369575b505050811b016003820155610af9565b015160001960f88460031b161c19169055868080611359565b8181015183556020948501946001909301929091019061133e565b909150600384016000526020600020601f840160051c8101602085106113e9575b90849392915b601f830160051c820181106113da575050610aca565b600081558594506001016113c4565b50806113be565b015190508680610a84565b9250600284016000526020600020906000935b601f1984168510611452576001945083601f19811610611439575b505050811b016002820155610a9c565b015160001960f88460031b161c19169055868080611429565b8181015183556020948501946001909301929091019061140e565b909150600284016000526020600020601f840160051c8101602085106114b9575b90849392915b601f830160051c820181106114aa575050610a6d565b60008155859450600101611494565b508061148e565b60405162461bcd60e51b815260206004820152601a60248201527f56656e7565206e616d652063616e6e6f7420626520656d7074790000000000006044820152606490fd5b60405162461bcd60e51b8152602060048201526024808201527f4d617820617474656e64656573206d75737420626520677265617465722074686044820152630616e20360e41b6064820152608490fd5b60405162461bcd60e51b815260206004820152602160248201527f456e642074696d65206d7573742062652061667465722073746172742074696d6044820152606560f81b6064820152608490fd5b606460405162461bcd60e51b815260206004820152602060248201527f53746172742074696d65206d75737420626520696e20746865206675747572656044820152fd5b60405162461bcd60e51b81526020600482015260146024820152734e616d652063616e6e6f7420626520656d70747960601b6044820152606490fd5b3461014957602036600319011261014957600435600052600260205260406000208054600160a01b60019003600183015416916002810161166590611852565b9261167260038301611852565b600483015460058401549061168960068601611852565b61169560078701611852565b6116a160088801611852565b916116ae60098901611852565b936116bb600a8a01611852565b956116c8600b8b01611852565b97600c8b01549c600d8c01549a600e8d01549c600f015460ff169d60405180608052526080516020015261020080608051604001526080510161170a916118f8565b608051808203906060015261171e916118f8565b916080516080015260805160a001526080518082039060c00152611741916118f8565b6080518082039060e00152611755916118f8565b60805180820390610100015261176a916118f8565b60805180820390610120015261177f916118f8565b608051808203906101400152611794916118f8565b6080518082039061016001526117a9916118f8565b9360805161018001526080516101a001526080516101c001526080516101e0016117d291611938565b60805180910390f35b90600182811c9216801561180b575b60208310146117f557565b634e487b7160e01b600052602260045260246000fd5b91607f16916117ea565b61020081019081106001600160401b03821117610e3257604052565b90601f801991011681019081106001600160401b03821117610e3257604052565b9060405191826000825492611866846117db565b9081845260019485811690816000146118d55750600114611892575b505061189092500383611831565b565b9093915060005260209081600020936000915b8183106118bd57505061189093508201013880611882565b855488840185015294850194879450918301916118a5565b91505061189094506020925060ff191682840152151560051b8201013880611882565b919082519283825260005b848110611924575050826000602080949584010152601f8019910116010190565b602081830181015184830182015201611903565b9060038210156104cf5752565b81601f82011215610149578035906001600160401b038211610e325760405192611979601f8401601f191660200185611831565b8284526020838301011161014957816000926020809301838601378301015290565b600435906001600160a01b038216820361014957565b80548210156119c95760005260206000200190600090565b634e487b7160e01b600052603260045260246000fd5b6000546001600160a01b031633036119f357565b60405163118cdaa760e01b8152336004820152602490fd5b15611a1257565b60405162461bcd60e51b8152602060048201526014602482015273115d995b9d08191bd95cc81b9bdd08195e1a5cdd60621b6044820152606490fd5b15611a5557565b60405162461bcd60e51b815260206004820152600e60248201526d139bdd08185d5d1a1bdc9a5e995960921b6044820152606490fd5b15611a9257565b60405162461bcd60e51b815260206004820152601060248201526f4576656e74206e6f742061637469766560801b6044820152606490fdfea26469706673582212209764b42f7bfe574bf452e1d43a5a3d8541285c0d479f20bc6f9f29f08e916d4d64736f6c63430008140033",
+  "devdoc": {
+    "details": "Contract for creating and managing events",
+    "errors": {
+      "OwnableInvalidOwner(address)": [
+        {
+          "details": "The owner is not a valid owner account. (eg. `address(0)`)"
+        }
+      ],
+      "OwnableUnauthorizedAccount(address)": [
+        {
+          "details": "The caller account is not authorized to perform an operation."
+        }
+      ]
+    },
+    "kind": "dev",
+    "methods": {
+      "cancelEvent(uint256)": {
+        "details": "Cancels an event",
+        "params": {
+          "eventId": "Event ID"
+        }
+      },
+      "completeEvent(uint256)": {
+        "details": "Completes an event",
+        "params": {
+          "eventId": "Event ID"
+        }
+      },
+      "createEvent(string,string,uint256,uint256,string,string,string,string,string,string,uint256,uint256)": {
+        "details": "Creates a new event",
+        "params": {
+          "city": "City",
+          "country": "Country",
+          "description": "Event description",
+          "endTime": "Event end time",
+          "maxAttendees": "Maximum number of attendees",
+          "name": "Event name",
+          "postalCode": "Postal code",
+          "startTime": "Event start time",
+          "state": "State",
+          "streetAddress": "Street address",
+          "ticketPrice": "Price per ticket in wei",
+          "venueName": "Venue name"
+        }
+      },
+      "getEventDetails(uint256)": {
+        "details": "Gets event details",
+        "params": {
+          "eventId": "Event ID"
+        }
+      },
+      "getOrganizerEvents(address)": {
+        "details": "Gets all events created by an organizer",
+        "params": {
+          "organizer": "Address of the organizer"
+        }
+      },
+      "owner()": {
+        "details": "Returns the address of the current owner."
+      },
+      "renounceOwnership()": {
+        "details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner."
+      },
+      "transferOwnership(address)": {
+        "details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+      },
+      "updateTicketsSold(uint256,uint256)": {
+        "details": "Updates ticket sales count for an event",
+        "params": {
+          "eventId": "Event ID",
+          "newTicketsSold": "New number of tickets sold"
+        }
+      }
+    },
+    "title": "CreateEvent",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 8,
+        "contract": "contracts/CreateEvent.sol:CreateEvent",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 185,
+        "contract": "contracts/CreateEvent.sol:CreateEvent",
+        "label": "_eventIds",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 228,
+        "contract": "contracts/CreateEvent.sol:CreateEvent",
+        "label": "events",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_mapping(t_uint256,t_struct(EventDetails)223_storage)"
+      },
+      {
+        "astId": 233,
+        "contract": "contracts/CreateEvent.sol:CreateEvent",
+        "label": "organizerEvents",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_mapping(t_address,t_array(t_uint256)dyn_storage)"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_array(t_uint256)dyn_storage": {
+        "base": "t_uint256",
+        "encoding": "dynamic_array",
+        "label": "uint256[]",
+        "numberOfBytes": "32"
+      },
+      "t_enum(EventStatus)189": {
+        "encoding": "inplace",
+        "label": "enum CreateEvent.EventStatus",
+        "numberOfBytes": "1"
+      },
+      "t_mapping(t_address,t_array(t_uint256)dyn_storage)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256[])",
+        "numberOfBytes": "32",
+        "value": "t_array(t_uint256)dyn_storage"
+      },
+      "t_mapping(t_uint256,t_struct(EventDetails)223_storage)": {
+        "encoding": "mapping",
+        "key": "t_uint256",
+        "label": "mapping(uint256 => struct CreateEvent.EventDetails)",
+        "numberOfBytes": "32",
+        "value": "t_struct(EventDetails)223_storage"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_struct(EventDetails)223_storage": {
+        "encoding": "inplace",
+        "label": "struct CreateEvent.EventDetails",
+        "members": [
+          {
+            "astId": 191,
+            "contract": "contracts/CreateEvent.sol:CreateEvent",
+            "label": "eventId",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 193,
+            "contract": "contracts/CreateEvent.sol:CreateEvent",
+            "label": "organizer",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address"
+          },
+          {
+            "astId": 195,
+            "contract": "contracts/CreateEvent.sol:CreateEvent",
+            "label": "name",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 197,
+            "contract": "contracts/CreateEvent.sol:CreateEvent",
+            "label": "description",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 199,
+            "contract": "contracts/CreateEvent.sol:CreateEvent",
+            "label": "startTime",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 201,
+            "contract": "contracts/CreateEvent.sol:CreateEvent",
+            "label": "endTime",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 203,
+            "contract": "contracts/CreateEvent.sol:CreateEvent",
+            "label": "venueName",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 205,
+            "contract": "contracts/CreateEvent.sol:CreateEvent",
+            "label": "streetAddress",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 207,
+            "contract": "contracts/CreateEvent.sol:CreateEvent",
+            "label": "city",
+            "offset": 0,
+            "slot": "8",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 209,
+            "contract": "contracts/CreateEvent.sol:CreateEvent",
+            "label": "state",
+            "offset": 0,
+            "slot": "9",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 211,
+            "contract": "contracts/CreateEvent.sol:CreateEvent",
+            "label": "postalCode",
+            "offset": 0,
+            "slot": "10",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 213,
+            "contract": "contracts/CreateEvent.sol:CreateEvent",
+            "label": "country",
+            "offset": 0,
+            "slot": "11",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 215,
+            "contract": "contracts/CreateEvent.sol:CreateEvent",
+            "label": "ticketPrice",
+            "offset": 0,
+            "slot": "12",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 217,
+            "contract": "contracts/CreateEvent.sol:CreateEvent",
+            "label": "maxAttendees",
+            "offset": 0,
+            "slot": "13",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 219,
+            "contract": "contracts/CreateEvent.sol:CreateEvent",
+            "label": "ticketsSold",
+            "offset": 0,
+            "slot": "14",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 222,
+            "contract": "contracts/CreateEvent.sol:CreateEvent",
+            "label": "status",
+            "offset": 0,
+            "slot": "15",
+            "type": "t_enum(EventStatus)189"
+          }
+        ],
+        "numberOfBytes": "512"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}
