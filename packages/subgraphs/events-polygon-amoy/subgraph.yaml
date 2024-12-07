@@ -1,0 +1,44 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: EventTicketing
+    network: polygon-amoy
+    source:
+      address: "0xFcA607E98c6950B194037934a4D1f75e9873814d"
+      abi: EventTicketing
+      startBlock: 15317921
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - ApprovalForAll
+        - EventCreated
+        - OwnershipTransferred
+        - TicketMinted
+        - TicketVerified
+        - Transfer
+      abis:
+        - name: EventTicketing
+          file: ./abis/EventTicketing.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,indexed uint256)
+          handler: handleApproval
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+        - event: EventCreated(indexed uint256,indexed address,string,uint256,uint256,uint256,uint256)
+          handler: handleEventCreated
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: TicketMinted(indexed uint256,indexed uint256,indexed bytes32)
+          handler: handleTicketMinted
+        - event: TicketVerified(indexed uint256,indexed uint256,indexed bytes32)
+          handler: handleTicketVerified
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+      file: ./src/event-ticketing.ts
