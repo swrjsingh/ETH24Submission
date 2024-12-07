@@ -1,43 +1,44 @@
-import { connectorsForWallets } from "@rainbow-me/rainbowkit";
+import { type WalletList, connectorsForWallets } from "@rainbow-me/rainbowkit";
 import {
   coinbaseWallet,
+  injectedWallet,
   ledgerWallet,
   metaMaskWallet,
   rainbowWallet,
-  safeWallet,
   walletConnectWallet,
 } from "@rainbow-me/rainbowkit/wallets";
-import { rainbowkitBurnerWallet } from "burner-connector";
-import * as chains from "viem/chains";
+import { type Chain } from "viem";
 import scaffoldConfig from "~~/scaffold.config";
 
-const { onlyLocalBurnerWallet, targetNetworks } = scaffoldConfig;
+const { onlyLocalBurnerWallet, targetNetworks, walletConnectProjectId } = scaffoldConfig;
 
-const wallets = [
-  metaMaskWallet,
-  walletConnectWallet,
-  ledgerWallet,
-  coinbaseWallet,
-  rainbowWallet,
-  safeWallet,
-  ...(!targetNetworks.some(network => network.id !== (chains.hardhat as chains.Chain).id) || !onlyLocalBurnerWallet
-    ? [rainbowkitBurnerWallet]
-    : []),
+const needsInjectedWalletFallback =
+  typeof window !== "undefined" && window.ethereum && !window.ethereum.isMetaMask && !window.ethereum.isCoinbaseWallet;
+
+// Define wallet list with proper typing
+const walletList: WalletList = [
+  {
+    groupName: "Recommended",
+    wallets: [
+      () => coinbaseWallet({ appName: "ZKonnect" }),
+      () => metaMaskWallet({ projectId: walletConnectProjectId }),
+      ...(needsInjectedWalletFallback ? [() => injectedWallet()] : []),
+    ],
+  },
+  {
+    groupName: "Other Options",
+    wallets: [
+      () => walletConnectWallet({ projectId: walletConnectProjectId }),
+      () => ledgerWallet({ projectId: walletConnectProjectId }),
+      () => rainbowWallet({ projectId: walletConnectProjectId }),
+    ],
+  },
 ];
 
 /**
  * wagmi connectors for the wagmi context
  */
-export const wagmiConnectors = connectorsForWallets(
-  [
-    {
-      groupName: "Supported Wallets",
-      wallets,
-    },
-  ],
-
-  {
-    appName: "scaffold-eth-2",
-    projectId: scaffoldConfig.walletConnectProjectId,
-  },
-);
+export const wagmiConnectors = connectorsForWallets(walletList, {
+  appName: "ZKonnect",
+  projectId: walletConnectProjectId,
+});
