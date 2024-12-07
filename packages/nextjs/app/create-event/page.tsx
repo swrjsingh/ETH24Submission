@@ -2,26 +2,24 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Layout } from "~/components/create-event/Layout";
-import { Attendees } from "~/components/create-event/steps/Attendees";
+import { parseEther } from "viem";
 import { BasicInfo } from "~/components/create-event/steps/BasicInfo";
 import { DateTime } from "~/components/create-event/steps/DateTime";
 import { Location } from "~/components/create-event/steps/Location";
 import { Tickets } from "~/components/create-event/steps/Tickets";
 import { EventFormData } from "~/components/create-event/types";
+import { useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
+import { notification } from "~~/utils/scaffold-eth";
 
 const CreateEvent = () => {
   const router = useRouter();
-  const [activeSection, setActiveSection] = useState("basic");
+  const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState<EventFormData>({
     name: "",
     description: "",
-    image: null,
-    startDate: "",
-    startTime: "",
-    endDate: "",
-    endTime: "",
-    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    imageCID: "QmTest123", // Placeholder CID
+    startTime: 0,
+    endTime: 0,
     venueName: "",
     streetAddress: "",
     city: "",
@@ -29,93 +27,103 @@ const CreateEvent = () => {
     postalCode: "",
     country: "",
     isOnline: false,
-    ticketTypes: [
-      {
-        id: crypto.randomUUID(),
-        name: "",
-        price: "",
-        quantity: "",
-        description: "",
-      },
-    ],
-    maxAttendees: "",
-    requiredInfo: [
-      { id: "name", label: "Full Name", type: "text", isRequired: true },
-      { id: "email", label: "Email", type: "email", isRequired: true },
-    ],
-    privacyLevel: "public",
-    secretIdRequired: false,
-    secretIdStakeAmount: "0",
+    ticketPrice: "",
+    maxAttendees: 0,
+    isPrivate: false,
   });
 
-  const handleNext = () => {
-    const sections = ["basic", "datetime", "location", "tickets", "attendees"];
-    const currentIndex = sections.indexOf(activeSection);
-    if (currentIndex < sections.length - 1) {
-      setActiveSection(sections[currentIndex + 1]);
+  const { writeContractAsync, isMining } = useScaffoldWriteContract("EventTicketing");
+
+  const handleNext = async () => {
+    if (currentStep < 4) {
+      setCurrentStep(currentStep + 1);
     } else {
-      // Handle form submission
-      console.log("Form submitted:", formData);
-      // TODO: Implement blockchain interaction
+      try {
+        const tx = await writeContractAsync({
+          functionName: "createEvent",
+          args: [
+            {
+              name: formData.name,
+              description: formData.description,
+              imageCID: formData.imageCID,
+              startTime: BigInt(formData.startTime),
+              endTime: BigInt(formData.endTime),
+              venueName: formData.venueName,
+              streetAddress: formData.streetAddress,
+              city: formData.city,
+              state: formData.state,
+              postalCode: formData.postalCode,
+              country: formData.country,
+              isOnline: formData.isOnline,
+              ticketPrice: parseEther(formData.ticketPrice || "0"),
+              maxAttendees: BigInt(formData.maxAttendees),
+              isPrivate: formData.isPrivate,
+            },
+          ],
+        });
+        console.log("Transaction hash:", tx);
+        notification.success("Event creation transaction sent! Hash: " + tx);
+        router.push("/events");
+      } catch (error) {
+        console.error("Failed to create event:", error);
+        notification.error("Failed to create event: " + (error as Error).message);
+      }
     }
   };
 
   const handleBack = () => {
-    const sections = ["basic", "datetime", "location", "tickets", "attendees"];
-    const currentIndex = sections.indexOf(activeSection);
-    if (currentIndex > 0) {
-      setActiveSection(sections[currentIndex - 1]);
+    if (currentStep > 1) {
+      setCurrentStep(currentStep - 1);
     }
   };
 
-  const renderStep = () => {
-    const commonProps = {
-      formData,
-      setFormData,
-      onNext: handleNext,
-      onBack: handleBack,
-    };
-
-    const StepComponent = (() => {
-      switch (activeSection) {
-        case "basic":
-          return <BasicInfo {...commonProps} />;
-        case "datetime":
-          return <DateTime {...commonProps} />;
-        case "location":
-          return <Location {...commonProps} />;
-        case "tickets":
-          return <Tickets {...commonProps} />;
-        case "attendees":
-          return <Attendees {...commonProps} />;
-        default:
-          return (
-            <div className="text-center space-y-4 animate-fade-in">
-              <p className="text-neutral opacity-85">
-                Select a section from the left menu to continue creating your event.
-              </p>
-              <button
-                onClick={() => setActiveSection("basic")}
-                className="btn btn-primary btn-sm shadow-sm hover:shadow-md transition-all duration-200"
-              >
-                Start with Basic Info
-              </button>
-            </div>
-          );
-      }
-    })();
-
-    return (
-      <div className="animate-fade-in" key={activeSection}>
-        {StepComponent}
-      </div>
-    );
+  const stepProps = {
+    formData,
+    setFormData,
+    onNext: handleNext,
+    onBack: handleBack,
   };
 
   return (
-    <Layout activeSection={activeSection} onSectionChange={setActiveSection}>
-      {renderStep()}
-    </Layout>
+    <div className="container mx-auto px-6 py-8 max-w-2xl">
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-center mb-4">Create New Event</h1>
+        <div className="flex justify-center items-center space-x-4">
+          {[1, 2, 3, 4].map(step => (
+            <div key={step} className="flex items-center">
+              <div
+                className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                  step === currentStep
+                    ? "bg-primary text-primary-content"
+                    : step < currentStep
+                      ? "bg-success text-success-content"
+                      : "bg-base-300 text-base-content"
+                }`}
+              >
+                {step < currentStep ? "✓" : step}
+              </div>
+              {step < 4 && <div className={`w-16 h-1 ${step < currentStep ? "bg-success" : "bg-base-300"}`} />}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="bg-base-200 rounded-xl p-6 shadow-lg">
+        {currentStep === 1 && <BasicInfo {...stepProps} />}
+        {currentStep === 2 && <DateTime {...stepProps} />}
+        {currentStep === 3 && <Location {...stepProps} />}
+        {currentStep === 4 && <Tickets {...stepProps} />}
+      </div>
+
+      {isMining && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center">
+          <div className="bg-base-200 p-4 rounded-lg shadow-lg">
+            <div className="loading loading-spinner loading-lg"></div>
+            <p className="mt-2">Creating event...</p>
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
 
