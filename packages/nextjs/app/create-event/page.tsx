@@ -57,7 +57,7 @@ const CreateEvent = () => {
         });
         console.log("Transaction hash:", tx);
         notification.success("Event creation transaction sent! Hash: " + tx);
-        router.push("/events");
+        //router.push("/events");
       } catch (error) {
         console.error("Failed to create event:", error);
         notification.error("Failed to create event: " + (error as Error).message);
