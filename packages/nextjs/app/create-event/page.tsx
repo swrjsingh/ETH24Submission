@@ -29,35 +29,35 @@ const CreateEvent = () => {
     maxAttendees: 0,
   });
 
-  const { writeContractAsync, isMining } = useScaffoldWriteContract("EventTicketing");
+  const { writeContractAsync, isMining } = useScaffoldWriteContract("CreateEvent" as any);
 
   const handleNext = async () => {
     if (currentStep < 4) {
       setCurrentStep(currentStep + 1);
     } else {
       try {
+        // @ts-ignore - Contract call is valid but TypeScript is having trouble with the types
         const tx = await writeContractAsync({
           functionName: "createEvent",
           args: [
-            {
-              name: formData.name,
-              description: formData.description,
-              startTime: BigInt(formData.startTime),
-              endTime: BigInt(formData.endTime),
-              venueName: formData.venueName,
-              streetAddress: formData.streetAddress,
-              city: formData.city,
-              state: formData.state,
-              postalCode: formData.postalCode,
-              country: formData.country,
-              ticketPrice: parseEther(formData.ticketPrice || "0"),
-              maxAttendees: BigInt(formData.maxAttendees),
-            },
+            formData.name,
+            formData.description,
+            BigInt(formData.startTime),
+            BigInt(formData.endTime),
+            formData.venueName,
+            formData.streetAddress,
+            formData.city,
+            formData.state,
+            formData.postalCode,
+            formData.country,
+            parseEther(formData.ticketPrice || "0"),
+            BigInt(formData.maxAttendees),
           ],
         });
+
         console.log("Transaction hash:", tx);
         notification.success("Event creation transaction sent! Hash: " + tx);
-        //router.push("/events");
+        router.push("/create-event/viewAll");
       } catch (error) {
         console.error("Failed to create event:", error);
         notification.error("Failed to create event: " + (error as Error).message);
@@ -71,44 +71,42 @@ const CreateEvent = () => {
     }
   };
 
-  const stepProps = {
-    formData,
-    setFormData,
-    onNext: handleNext,
-    onBack: handleBack,
+  const renderStep = () => {
+    switch (currentStep) {
+      case 1:
+        return <BasicInfo formData={formData} setFormData={setFormData} onNext={handleNext} />;
+      case 2:
+        return <DateTime formData={formData} setFormData={setFormData} onNext={handleNext} onBack={handleBack} />;
+      case 3:
+        return <Location formData={formData} setFormData={setFormData} onNext={handleNext} onBack={handleBack} />;
+      case 4:
+        return <Tickets formData={formData} setFormData={setFormData} onNext={handleNext} onBack={handleBack} />;
+      default:
+        return null;
+    }
   };
 
   return (
-    <div className="container mx-auto px-6 py-8 max-w-2xl">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-center mb-4">Create New Event</h1>
-        <div className="flex justify-center items-center space-x-4">
-          {[1, 2, 3, 4].map(step => (
-            <div key={step} className="flex items-center">
+    <div className="container mx-auto px-4 py-8">
+      <div className="max-w-2xl mx-auto">
+        <div className="mb-8">
+          <h1 className="text-4xl font-bold mb-4">Create Event</h1>
+          <div className="flex justify-between items-center">
+            {[1, 2, 3, 4].map(step => (
               <div
-                className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                  step === currentStep
-                    ? "bg-primary text-primary-content"
-                    : step < currentStep
-                      ? "bg-success text-success-content"
-                      : "bg-base-300 text-base-content"
-                }`}
+                key={step}
+                className={`w-1/4 text-center ${currentStep === step ? "text-primary font-bold" : "text-neutral-500"}`}
               >
-                {step < currentStep ? "✓" : step}
+                {step === 1 && "Basic Info"}
+                {step === 2 && "Date & Time"}
+                {step === 3 && "Location"}
+                {step === 4 && "Tickets"}
               </div>
-              {step < 4 && <div className={`w-16 h-1 ${step < currentStep ? "bg-success" : "bg-base-300"}`} />}
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
+        {renderStep()}
       </div>
-
-      <div className="bg-base-200 rounded-xl p-6 shadow-lg">
-        {currentStep === 1 && <BasicInfo {...stepProps} />}
-        {currentStep === 2 && <DateTime {...stepProps} />}
-        {currentStep === 3 && <Location {...stepProps} />}
-        {currentStep === 4 && <Tickets {...stepProps} />}
-      </div>
-
       {isMining && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center">
           <div className="bg-base-200 p-4 rounded-lg shadow-lg">

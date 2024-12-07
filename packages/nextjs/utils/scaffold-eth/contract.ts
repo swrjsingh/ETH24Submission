@@ -60,7 +60,7 @@ const deepMergeContracts = <L extends Record<PropertyKey, any>, E extends Record
 
 const contractsData = deepMergeContracts(deployedContractsData, externalContractsData);
 
-export type InheritedFunctions = { readonly [key: string]: string };
+export type InheritedFunctions = { readonly [_: string]: string };
 
 export type GenericContract = {
   address: Address;
@@ -79,17 +79,18 @@ export const contracts = contractsData as GenericContractsDeclaration | null;
 
 type ConfiguredChainId = (typeof scaffoldConfig)["targetNetworks"][0]["id"];
 
-type IsContractDeclarationMissing<TYes, TNo> = typeof contractsData extends { [key in ConfiguredChainId]: any }
+type IsContractDeclarationMissing<TYes, TNo> = typeof contractsData extends { [_ in ConfiguredChainId]: any }
   ? TNo
   : TYes;
 
 type ContractsDeclaration = IsContractDeclarationMissing<GenericContractsDeclaration, typeof contractsData>;
 
-type Contracts = ContractsDeclaration[ConfiguredChainId];
+// We don't use this type but it's needed for type inference
+type _Contracts = ContractsDeclaration[ConfiguredChainId];
 
-export type ContractName = "EventTicketing";
+export type ContractName = keyof (typeof deployedContractsData)[ConfiguredChainId];
 
-export type Contract<TContractName extends ContractName> = GenericContract;
+export type Contract<_TContractName extends ContractName> = GenericContract;
 
 type InferContractAbi<TContract> = TContract extends { abi: Abi } ? TContract["abi"] : never;
 
