@@ -1,5 +1,6 @@
 # 🏗 Scaffold-ETH 2
 
+**Note**: Switch to mainreplica for the updated code of the project zKonnect.
 <h4 align="center">
   <a href="https://docs.scaffoldeth.io">Documentation</a> |
   <a href="https://scaffoldeth.io">Website</a>
